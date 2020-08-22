@@ -1,0 +1,37 @@
+// MyX64COMComponent.idl : IDL source for MyX64COMComponent
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MyX64COMComponent.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(75adfa65-f82d-400f-ab3c-af9361d2904b),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMySampleCOMObject : IDispatch
+{
+	[id(1)] HRESULT GetProcessDetails([out, retval] BSTR* details);
+};
+[
+	uuid(3e61ce9c-6515-4ee8-8942-c373fecafec0),
+	version(1.0),
+]
+library MyX64COMComponentLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(6e175df4-ef68-4a87-9eeb-27316d1703a7)
+	]
+	coclass MySampleCOMObject
+	{
+		[default] interface IMySampleCOMObject;
+	};
+};
+
+import "shobjidl.idl";
